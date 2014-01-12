@@ -1,0 +1,6 @@
+{
+
+  "main":"com.lasso.verticles.MainVerticle",
+  "includes": "com.englishtown~vertx-mod-jersey~2.0.0-SNAPSHOT"
+
+}
