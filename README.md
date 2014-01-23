@@ -8,13 +8,13 @@ main Verticle -com.lasso.verticles.MainVerticle.
 This verticle starts the jersey server and listens to requests.
 
 mod.json
-    Added "includes": "com.englishtown~vertx-mod-jersey~2.0.0-SNAPSHOT"
+    Added "includes": "com.englishtown~vertx-mod-jersey~2.4.0-final"
 
 config.json
     Contains jersey configuration.
 
 To run module:
-mvn vertx:runMod -Dvertx.langs.java=com.englishtown~vertx-mod-hk2~1.0.0-final:com.englishtown.vertx.hk2.HK2VerticleFactory
+mvn vertx:runMod -Dvertx.langs.java=com.englishtown~vertx-mod-hk2~1.5.0-final:com.englishtown.vertx.hk2.HK2VerticleFactory
 
 Using any rest client:
 

@@ -30,9 +30,21 @@ public class MainVerticle  extends Verticle {
     public void start(Future<Void> startedResult) {
         super.start();
         System.out.println("Deploying JerseyModule");
-        container.deployModule("com.englishtown~vertx-mod-jersey~2.0.0-SNAPSHOT");
-//        startJerseyServer(startedResult);
-        System.out.println("Deployed JerseyModule");
+        startJerseyServer(startedResult);
+        JsonObject config = new JsonObject();
+        config.putString("address", "test.session-manager");
+        config.putNumber("timeout",15 * 60 * 1000 );
+        config.putString("cleaner", "test.session-cleanup");
+        config.putString("prefix", "session-client");
+        container.deployModule("com.campudus~session-manager~2.0.1-final",config,
+                new Handler<AsyncResult<String>>() {
+            @Override
+            public void handle(AsyncResult<String> event) {
+                System.out.println("Handler Invoked with :"+ event.succeeded());
+            }
+        });
+
+        System.out.println("Deployed Session Manager");
     }
 
     private void startJerseyServer(final Future<Void> startedResult) {
