@@ -1,6 +1,7 @@
 {
 
   "main":"com.lasso.verticles.MainVerticle",
-  "includes": "com.englishtown~vertx-mod-jersey~2.4.0-final, com.campudus~session-manager~2.0.1-final,  io.vertx~lang-scala~0.3.0"
+  "includes": "com.englishtown~vertx-mod-jersey~2.4.0-final, com.campudus~session-manager~2.0.1-final,  io.vertx~lang-scala~0.3.0,  io.vertx~mod-mongo-persistor~2.1.0",
+  "lang-impl": "com.englishtown~vertx-mod-hk2~1.5.0-final:com.englishtown.vertx.hk2.HK2VerticleFactory"
 
 }

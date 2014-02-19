@@ -29,30 +29,41 @@ public class MainVerticle  extends Verticle {
     @Override
     public void start(Future<Void> startedResult) {
         super.start();
-        System.out.println("Deploying JerseyModule");
+        System.out.println("Deploying JerseyModule: "+container.config());
         startJerseyServer(startedResult);
-        JsonObject config = new JsonObject();
-        config.putString("address", "test.session-manager");
-        config.putNumber("timeout",15 * 60 * 1000 );
-        config.putString("cleaner", "test.session-cleanup");
-        config.putString("prefix", "session-client");
-        container.deployModule("com.campudus~session-manager~2.0.1-final",config,
+        container.deployModule("io.vertx~mod-mongo-persistor~2.1.0",container.config().getObject("mongo-persistor"),
                 new Handler<AsyncResult<String>>() {
             @Override
             public void handle(AsyncResult<String> event) {
-                System.out.println("Handler Invoked with :"+ event.succeeded());
+                if(!event.succeeded()) {
+                    event.cause().printStackTrace();
+                }
+                System.out.println("Mongo Handler Invoked with :"+ event.succeeded());
             }
         });
 
+        container.deployModule("com.campudus~session-manager~2.0.1-final",container.config().getObject("session-manager"),
+                new Handler<AsyncResult<String>>() {
+            @Override
+            public void handle(AsyncResult<String> event) {
+                if(!event.succeeded()) {
+                    event.cause().printStackTrace();
+                }
+                System.out.println("Session manager Handler Invoked with :"+ event.succeeded());
+            }
+        });
+        JsonObject mongoData = new JsonObject();
+        mongoData.putString("testData", "test");
         System.out.println("Deployed Session Manager");
     }
 
     private void startJerseyServer(final Future<Void> startedResult) {
         JsonObject config = container.config();
+        System.out.println("Jersey Config :"+config.getObject("rest_config").toString());
         JerseyServer jerseyServer = jerseyServerProvider.get();
         JerseyConfigurator configurator = configuratorProvider.get();
 
-        configurator.init(config, vertx, container);
+        configurator.init(config.getObject("rest_config"), vertx, container);
 
         jerseyServer.init(configurator, new Handler<AsyncResult<HttpServer>>() {
             @Override

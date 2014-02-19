@@ -1,16 +1,23 @@
 {
-   /* "mongo-persistor" : {
-        "address": "mongodb-persistor",
+    "rest_config": {
         "host": "localhost",
-        "port": 27017,
-        "pool_size": 15,
-        "db_name": "vertx"
-    },*/
-
-    "host": "localhost",
-    "port": 8080,
-    "base_path": "/",
-    "resources": ["com.lasso.rest.resources"],
-    "features": ["org.glassfish.jersey.jackson.JacksonFeature"]
+        "port": 8080,
+        "base_path": "/",
+        "resources": ["com.lasso.rest.resources"],
+        "features": ["org.glassfish.jersey.jackson.JacksonFeature"]
+    },
+    "mongo-persistor": {
+        "address": "mongo",
+        "db_name": "vertx_session"
+    },
+    "session-manager": {
+        "address": "test.session-manager",
+        "timeout": 900000,
+        "cleaner": "test.session-cleanup",
+        "prefix": "session-client.",
+        "mongo-sessions": {
+            "address": "mongo",
+            "collection": "sessions"
+        }
+    }
 }
-

@@ -36,7 +36,7 @@
         <mods.directory>target/mods</mods.directory>
 
         <!--Dependency versions-->
-        <vertx.version>2.1M1</vertx.version>
+        <vertx.version>2.1M5</vertx.version>
         <vertx.testtools.version>2.0.2-final</vertx.testtools.version>
         <junit.version>4.11</junit.version>
 
@@ -52,9 +52,9 @@
         <maven.dependency.plugin.version>2.7</maven.dependency.plugin.version>
 <!--REST-->
         <hk2.version>2.1.79</hk2.version>
-        <vertx.mod.jersey.version>2.0.0-SNAPSHOT</vertx.mod.jersey.version>
-        <jersey.version>2.0</jersey.version>
-        <vertx.mod.hk2.version>1.0.0-final</vertx.mod.hk2.version>
+        <vertx.mod.jersey.version>2.4.0-final</vertx.mod.jersey.version>
+        <jersey.version>2.3</jersey.version>
+        <vertx.mod.hk2.version>1.5.0-final</vertx.mod.hk2.version>
     </properties>
 
     <!--<repositories>

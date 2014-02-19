@@ -86,24 +86,3 @@ class User {
         this.token = token;
     }
 }
-
-/*final JsonObject reply = new JsonObject();
-        Handler<Message<JsonObject>> replyHandler = new Handler<Message<JsonObject>>() {
-            @Override
-            public void handle(Message<JsonObject> event) {
-                JsonObject replyObject = event.body();
-                System.out.println("----:" + replyObject);
-                reply.mergeIn(replyObject);
-            }
-        };
-        Handler<Message<String>> replyHandler1 = new Handler<Message<String>>() {
-            @Override
-            public void handle(Message<String> event) {
-                System.out.println("Handler-------------" + event.body());
-            }
-        };
-        vertx.eventBus().send("campudus.session", startSession, replyHandler1);
-        vertx.eventBus().send("campudus.session", startSession, replyHandler);
-        vertx.eventBus().send("sample.session-manager", startSession, replyHandler);
-        vertx.eventBus().send("sample.session-manager", startSession, replyHandler1);
-        vertx.eventBus().send("sample.session-manager", new JsonObject().putString("action","status").putString("report", "connections"));*/

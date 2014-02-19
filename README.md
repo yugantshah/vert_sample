@@ -29,7 +29,7 @@ Json Request String  :
 }
 
 
+Mongo DB :
 
-
-
-
+db name : vertx_session
+collection name : sessions
